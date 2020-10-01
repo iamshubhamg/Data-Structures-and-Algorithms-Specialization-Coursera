@@ -30,3 +30,4 @@ int main()
     display(v,n);
     return 0;
 }
+print("this was max prizes")
