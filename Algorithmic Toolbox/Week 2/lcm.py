@@ -12,3 +12,4 @@ else:
     gcd = euclid_gcd(b, a)
 
 print(a*b//gcd)
+print("this was lcm")
