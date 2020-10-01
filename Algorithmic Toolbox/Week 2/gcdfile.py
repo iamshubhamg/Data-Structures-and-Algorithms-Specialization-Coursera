@@ -1,14 +1,16 @@
-a, b = [int(i) for i in input().split()]
-
-# print(a,b)
-def gcd(a, b):
-    if b == 0:
-        print(a)
-        quit()
-    c = a%b
-    gcd(b, c)
-
-if a>b:
-    gcd(a, b)
-else:
-    gcd(b, a)
+#include<bits/stdc++.h>
+using namespace std;
+long long gcd(long long a,long long b)
+{
+    if(b==0)
+        return a;
+    long long r=a%b;
+    return gcd(b,r);
+}
+int main()
+{
+    long long a,b;
+    cin>>a>>b;
+    cout<<gcd(a,b);
+    return 0;
+}
