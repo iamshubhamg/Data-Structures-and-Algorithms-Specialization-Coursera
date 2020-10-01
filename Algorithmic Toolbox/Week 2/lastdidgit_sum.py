@@ -14,11 +14,11 @@ elif lesser==0:
 def fibo(n):
     a,b = 0, 1
     for _ in range(2,lesser+1):
-        c = a+b
-        c = c%10
-        b, a = c, b
-    if c!=0:
-        print(c-1)
+        k = a+b
+        k = k%10
+        b, a = k, b
+    if k!=0:
+        print(k-1)
     else:
         print(9)
 fibo(lesser)
