@@ -22,3 +22,4 @@ def fibo(n):
     else:
         print(9)
 fibo(lesser)
+print("this was last digit sum")
