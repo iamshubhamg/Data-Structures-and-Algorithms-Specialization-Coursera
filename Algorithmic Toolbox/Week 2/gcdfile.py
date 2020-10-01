@@ -7,7 +7,7 @@ long long gcd(long long a,long long b)
     long long r=a%b;
     return gcd(b,r);
 }
-int main()
+void main()
 {
     long long a,b;
     cin>>a>>b;
