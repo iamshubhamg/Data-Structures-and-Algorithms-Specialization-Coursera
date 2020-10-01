@@ -22,5 +22,4 @@ for v,w in lst:
     amt = min(w, W)
     total_value += amt*v/w
     W -= amt
-
-print(total_value)
+print(totalvalue)
