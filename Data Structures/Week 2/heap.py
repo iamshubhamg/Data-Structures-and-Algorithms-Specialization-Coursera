@@ -1,40 +1,73 @@
-class HeapBuilder:
-    def __init__(self):
-        self._swaps = [] #array of tuples or arrays
-        self._data = []
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-    def ReadData(self):
-        n = int(input())
-        self._data = [int(s) for s in input().split()]
-        assert n == len(self._data)
+using std::vector;
+using std::cin;
+using std::cout;
+using std::swap;
+using std::pair;
+using std::make_pair;
 
-    def WriteResponse(self):
-        print(len(self._swaps))
-        for swap in self._swaps:
-            print(swap[0], swap[1])
+class HeapBuilder {
+ private:
+  vector<int> data_;
+  vector< pair<int, int> > swaps_;
 
-    def swapup(self,i):
-        if i !=0:
-#             print(self._data[int((i-1)/2)], self._data[i])
-            if self._data[int((i-1)/2)]> self._data[i]:
-#                 print('2')
-                self._swaps.append(((int((i-1)/2)),i))
-                self._data[int((i-1)/2)], self._data[i] = self._data[i],self._data[int((i-1)/2)]
-                self.swapup(int((i-1)/2))
-    # so for i in range(0,n), implement swap up  ai < a2i+1  ai < a2i+2
-        for i in range(len(self._data)-1,0,-1):
-            self.swapup(i)
-#             print('1')
-#             for j in range(i + 1, len(self._data)):
-#                 if self._data[i] > self._data[j]:
-#                     self._swaps.append((i, j))
-#                     self._data[i], self._data[j] = self._data[j], self._data[i]
+  void WriteResponse() const {
+    cout << swaps_.size() << "\n";
+    for (int i = 0; i < swaps_.size(); ++i) {
+      cout << swaps_[i].first << " " << swaps_[i].second << "\n";
+    }
+  }
 
-    def Solve(self):
-        self.ReadData()
-        self.GenerateSwaps()
-        self.WriteResponse()
+  void ReadData() {
+    int n;
+    cin >> n;
+    data_.resize(n);
+    for(int i = 0; i < n; ++i)
+      cin >> data_[i];
+  }
 
-if __name__ == '__main__':
-    heap_builder = HeapBuilder()
-    heap_builder.Solve()
+  void GenerateSwaps()
+  {
+	swaps_.clear();
+	for (int i = data_.size()/2; i >= 0; i--)
+    {
+		SiftDown(i);
+	}
+  }
+    void SiftDown(int i)
+    {
+	int minIndex = i;
+	int l = 2*i + 1;
+	if(l < data_.size() && data_[l] < data_[minIndex])
+		minIndex = l;
+	int r = 2*i + 2;
+	if(r < data_.size() && data_[r] < data_[minIndex])
+		minIndex = r;
+	if(i!=minIndex)
+    {
+		swap(data_[i], data_[minIndex]);
+		swaps_.push_back(make_pair(i, minIndex));
+		SiftDown(minIndex);
+     }
+    }
+
+ public:
+  void Solve()
+  {
+    ReadData();
+    GenerateSwaps();
+    WriteResponse();
+  }
+
+};
+
+int main()
+{
+  std::ios_base::sync_with_stdio(false);
+  HeapBuilder heap_builder;
+  heap_builder.Solve();
+  return 0;
+}
