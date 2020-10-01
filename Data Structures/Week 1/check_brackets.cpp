@@ -4,10 +4,10 @@ int main()
 {
     for (int j=0;j<=5;j++)
     {
-      for(int i=0;i<=5;i++)
+      for(int k=0;k<=5;k++)
      {
-        cout<<i<<endl;
-        if(i<3)
+        cout<<k<<endl;
+        if(k<3)
         {
             break;
         }
