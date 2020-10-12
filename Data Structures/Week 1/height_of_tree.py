@@ -13,4 +13,5 @@ def compute_height(n, parents):
 def main():
     n = int(input())
     parents = list(map(int, input().split()))
-    print(compute_height(n, parents))
+    print(compute_height(n, parents)
+#use c++ and let me know
